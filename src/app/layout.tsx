@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import Header from "@/components/header/Header";
 import "./globals.css";
 import Footer from "@/components/footer/Footer";
+import ThemeProvider from "@/components/themeProvider/ThemeProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -25,11 +26,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <main className="font-normal">
-          <Header></Header>
-          {children}
-          <Footer></Footer>
-        </main>
+        <ThemeProvider>
+          <main className="font-normal">
+            <Header></Header>
+            {children}
+            <Footer></Footer>
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );
