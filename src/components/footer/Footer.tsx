@@ -9,7 +9,7 @@ const Footer = () => {
         <Link href={"/"} className="font-black text-tertiary-dark">
           Elite Eden
         </Link>
-        <h4 className="font-semibold text-[40px] py-6">Contact</h4>
+        <h4 className="font-semibold text-[40px] ">Contact</h4>
         <div className="flex flex-wrap gap-16 justify-between items-center">
           <div className="flex-1">
             <p>123 Road</p>
@@ -42,7 +42,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="bg-tertiary-light h-10 md:h-[70px] mt-16 bottom-0 left-0"></div>
+      <div className="bg-tertiary-light h-10 lg:h-[70px]  md:h-[70px] mt-16 bottom-0 left-0"></div>
     </footer>
   );
 };
