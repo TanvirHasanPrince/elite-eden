@@ -4,6 +4,8 @@ import Header from "@/components/header/Header";
 import "./globals.css";
 import Footer from "@/components/footer/Footer";
 import ThemeProvider from "@/components/themeProvider/ThemeProvider";
+import { NextAuthProvider } from "@/components/authProvider/authProvider";
+import Toast from "@/components/toast/Toast";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,13 +28,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <ThemeProvider>
-          <main className="font-normal">
-            <Header></Header>
-            {children}
-            <Footer></Footer>
-          </main>
-        </ThemeProvider>
+        <NextAuthProvider>
+          <ThemeProvider>
+            <Toast />
+            <main className="font-normal">
+              <Header></Header>
+              {children}
+              <Footer></Footer>
+            </main>
+          </ThemeProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );
