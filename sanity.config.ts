@@ -7,8 +7,8 @@ export default defineConfig({
   name: "default",
   title: "elite-eden",
 
-  projectId: "mwvw14za",
-  dataset: "production",
+  projectId: process.env.NEXT_PUBLIC_SANITY_ID as string,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET as string,
 
   basePath: "/studio",
 
