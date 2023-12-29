@@ -20,6 +20,19 @@ const Auth = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const { data: session } = useSession();
+  console.log(session);
+
+  const loginHandler = async () => {
+    try {
+      await signIn();
+      // push the user to the homepage
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong!");
+    }
+  };
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
@@ -28,7 +41,7 @@ const Auth = () => {
         toast.success("Sccuess. Pleas sign in");
       }
     } catch (error) {
-       toast.error("Something went wrong!");
+      toast.error("Something went wrong!");
     } finally {
       setFormData(defaultFormData);
     }
@@ -48,8 +61,14 @@ const Auth = () => {
           </h1>
           <p>OR</p>
           <span className="inline-flex items-center">
-            <AiFillGithub className="mr-3 text-4xl cursor-pointer text-black dark:text-white " />
-            <FcGoogle className="ml-3 text-4xl cursor-pointer" />
+            <AiFillGithub
+              className="mr-3 text-4xl cursor-pointer text-black dark:text-white "
+              onClick={loginHandler}
+            />
+            <FcGoogle
+              className="ml-3 text-4xl cursor-pointer"
+              onClick={loginHandler}
+            />
           </span>
         </div>
       </div>
@@ -92,7 +111,11 @@ const Auth = () => {
           Sign Up
         </button>
 
-        <button type="submit" className="text-blue-700 underline">
+        <button
+          type="submit"
+          className="text-blue-700 underline"
+          onClick={loginHandler}
+        >
           Login
         </button>
       </form>
