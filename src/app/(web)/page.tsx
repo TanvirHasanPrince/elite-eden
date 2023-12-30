@@ -1,5 +1,6 @@
 import Gallery from "@/components/gallery/Gallery";
 import HeroSection from "@/components/heroSection/HeroSection";
+import NewsLetter from "@/components/newsLetter/NewsLetter";
 import PageSearch from "@/components/pageSearch/PageSearch";
 
 const Home = () => {
@@ -9,7 +10,7 @@ const Home = () => {
       <PageSearch />
       {/* Featured Room */}
       <Gallery />
-      {/* News Letter */}
+   <NewsLetter></NewsLetter>
     </>
   );
 };
