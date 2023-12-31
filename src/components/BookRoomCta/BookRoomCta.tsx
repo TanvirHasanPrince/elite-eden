@@ -15,8 +15,10 @@ type Props = {
   price: number;
   discount: number;
   adults: number;
-  noOfchildren: number;
+  noOfChildren: number;
   specialNote: string;
+  isBooked: boolean;
+  handleBookNowClick: () => void;
 };
 
 const BookRoomCta: FC<Props> = (props) => {
@@ -32,16 +34,19 @@ const BookRoomCta: FC<Props> = (props) => {
     setAdults,
     setNoOfChildren,
     adults,
-    noOfchildren,
+    noOfChildren,
+    isBooked,
+    handleBookNowClick,
   } = props;
 
   const discountPrice = price - (price / 100) * discount;
-  const calcNoOfDays = () => {
-    if (!checkinDate || !checkoutDate) return 0;
-    const timeDiff = checkoutDate.getTime() - checkinDate.getTime();
-    const noOfDays = Math.ceil(timeDiff / (24 * 60 * 60 * 1000));
-    return noOfDays;
-  };
+
+ const calcNoOfDays = () => {
+   if (!checkinDate || !checkoutDate) return 0;
+   const timeDiff = checkoutDate.getTime() - checkinDate.getTime();
+   const noOfDays = Math.ceil(timeDiff / (24 * 60 * 60 * 1000));
+   return noOfDays;
+ };
 
   return (
     <div className="px-7 py-6">
@@ -129,7 +134,7 @@ const BookRoomCta: FC<Props> = (props) => {
           <input
             type="number"
             id="children"
-            value={noOfchildren}
+            value={noOfChildren}
             onChange={(e) => setNoOfChildren(+e.target.value)}
             min={0}
             max={3}
@@ -142,6 +147,14 @@ const BookRoomCta: FC<Props> = (props) => {
       ) : (
         <></>
       )}
+
+      <button
+        disabled={isBooked}
+        onClick={handleBookNowClick}
+        className="btn-primary w-full mt-6 disabled:bg-gray-500 disabled:cursor-not-allowed"
+      >
+        {isBooked ? "Booked" : "Book Now"}
+      </button>
     </div>
   );
 };
