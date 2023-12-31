@@ -9,11 +9,19 @@ import { GiSmokeBomb } from "react-icons/gi";
 import LoadingSpinner from "../../loading";
 import HotelPhotoGallery from "@/components/hotelPhotoGallery/HotelPhotoGallery";
 import BookRoomCta from "@/components/BookRoomCta/BookRoomCta";
+import { useState } from "react";
 
 const RoomDetails = (porps: { params: { slug: string } }) => {
   const {
     params: { slug },
   } = porps;
+
+  const [checkinDate, setCheckinDate] = useState<Date | null>(null);
+  const [checkoutDate, setCheckoutDate] = useState<Date | null>(null);
+  const [adults, setAdults] = useState(1);
+  const [noOfchildren, setNoOfChildren] = useState(1);
+
+
 
   const fetchRoom = async () => getRoom(slug);
   const { data: room, error, isLoading } = useSWR("/api/room", fetchRoom);
@@ -23,6 +31,16 @@ const RoomDetails = (porps: { params: { slug: string } }) => {
     throw new Error("Cannot fetch data");
 
   if (!room) return <LoadingSpinner />;
+
+  const calcMinCheckoutDate = () => {
+    if (checkinDate) {
+      const nextDay = new Date(checkinDate);
+      nextDay.setDate(nextDay.getDate() + 1);
+      return nextDay;
+    }
+
+    return null;
+  };
 
   return (
     <div>
@@ -110,11 +128,21 @@ const RoomDetails = (porps: { params: { slug: string } }) => {
             {/* Reviews */}
           </div>
         </div>
+
         <div className="md:col-span-4 lg:col-span-4 rounded-xl shadow-lg dark:shadow dark:shadow-white sticky top-10 h-fit overflow-auto">
           <BookRoomCta
             discount={room.discount}
             price={room.price}
             specialNote={room.specialNote}
+            checkinDate={checkinDate}
+            setCheckinDate={setCheckinDate}
+            checkoutDate={checkoutDate}
+            setCheckoutDate={setCheckoutDate}
+            calcMinCheckoutDate={calcMinCheckoutDate}
+            adults={adults}
+            noOfchildren={noOfchildren}
+            setAdults={setAdults}
+            setNoOfChildren={setNoOfChildren}
           />
         </div>
       </div>
