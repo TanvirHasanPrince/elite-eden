@@ -12,8 +12,6 @@ const BookRoomCta: FC<Props> = (props) => {
   const { price, discount, specialNote } = props;
   const discountPrice = price - (price / 100) * discount;
 
-
-
   return (
     <div className="px-7 py-6">
       <h3>
