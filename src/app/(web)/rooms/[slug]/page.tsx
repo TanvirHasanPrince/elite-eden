@@ -100,6 +100,18 @@ const RoomDetails = (porps: { params: { slug: string } }) => {
             </div>
           </div>
         </div>
+        {/* Review Section */}
+        <div className="shadow dark:shadow-white rounded-lg p-6 ">
+          <div className="items-center mb-4">
+            <p className="md:textt-lg font-semibold">Customer Reviews</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+            {/* Reviews */}
+          </div>
+        </div>
+      </div>
+      <div className="md:col-span-4 rounded-xl shadow-lg dark:shadow dark:shadow-white">
+
       </div>
     </div>
   );
