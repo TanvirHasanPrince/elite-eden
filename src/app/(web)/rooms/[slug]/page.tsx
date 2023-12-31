@@ -19,8 +19,6 @@ const RoomDetails = (porps: { params: { slug: string } }) => {
 
   if (!room) return <LoadingSpinner />;
 
-  console.log(room);
-
   return (
     <div>
       <HotelPhotoGallery photos={room.images} />
@@ -49,6 +47,24 @@ const RoomDetails = (porps: { params: { slug: string } }) => {
 
           <div className="md:col-span-4 lg:col-span-4 rounded-xl shadow-lg dark:shadow dark:shadow-white sticky top-10 h-fit overflow-auto">
             {/* Book Room CTA */}
+          </div>
+        </div>
+        <div className="mb-11">
+          <h2 className="font-bold text-3xl mb-2">Description</h2>
+          <p>{room.description}</p>
+        </div>
+        <div className="mb-11">
+          <h2 className="font-bold text-3xl mb-2">Offered Amenities</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-1 grid-cols-1">
+            {room.offeredAmenities.map((amenity) => (
+              <div
+                key={amenity._key}
+                className="flex items-center md:my-0 lg:my-0 my-1"
+              >
+                <i className={`fa-solid ${amenity.icon}`}></i>
+                <p className="text-xs md:text-base ml-2">{amenity.amenity}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
