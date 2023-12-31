@@ -8,6 +8,7 @@ import { AiOutlineMedicineBox } from "react-icons/ai";
 import { GiSmokeBomb } from "react-icons/gi";
 import LoadingSpinner from "../../loading";
 import HotelPhotoGallery from "@/components/hotelPhotoGallery/HotelPhotoGallery";
+import BookRoomCta from "@/components/BookRoomCta/BookRoomCta";
 
 const RoomDetails = (porps: { params: { slug: string } }) => {
   const {
@@ -109,9 +110,13 @@ const RoomDetails = (porps: { params: { slug: string } }) => {
             {/* Reviews */}
           </div>
         </div>
-      </div>
-      <div className="md:col-span-4 rounded-xl shadow-lg dark:shadow dark:shadow-white">
-
+        <div className="md:col-span-4 lg:col-span-4 rounded-xl shadow-lg dark:shadow dark:shadow-white sticky top-10 h-fit overflow-auto">
+          <BookRoomCta
+            discount={room.discount}
+            price={room.price}
+            specialNote={room.specialNote}
+          />
+        </div>
       </div>
     </div>
   );
