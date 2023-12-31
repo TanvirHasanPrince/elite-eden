@@ -2,6 +2,10 @@
 
 import { getRoom } from "@/libs/apis";
 import useSWR from "swr";
+import { MdOutlineCleaningServices } from "react-icons/md";
+import { LiaFireExtinguisherSolid } from "react-icons/lia";
+import { AiOutlineMedicineBox } from "react-icons/ai";
+import { GiSmokeBomb } from "react-icons/gi";
 import LoadingSpinner from "../../loading";
 import HotelPhotoGallery from "@/components/hotelPhotoGallery/HotelPhotoGallery";
 
@@ -65,6 +69,35 @@ const RoomDetails = (porps: { params: { slug: string } }) => {
                 <p className="text-xs md:text-base ml-2">{amenity.amenity}</p>
               </div>
             ))}
+          </div>
+        </div>
+        <div className="mb-11">
+          <h2 className="font-bold text-3xl mb-2">Safety and Hygiene</h2>
+          <div className="grid grid-cols-1">
+            <div className="flex items-center my-1 md:my-0 lg:my-0">
+              <MdOutlineCleaningServices />
+              <p className="ml-2 md:text-base lg:text-base text-xs">
+                Daily Cleaning
+              </p>
+            </div>
+            <div className="flex items-center my-1 md:my-0 lg:my-0">
+              <LiaFireExtinguisherSolid />
+              <p className="ml-2 md:text-base lg:text-base text-xs">
+                Fire Extinguishers
+              </p>
+            </div>
+            <div className="flex items-center my-1 md:my-0 lg:my-0">
+              <AiOutlineMedicineBox />
+              <p className="ml-2 md:text-base lg:text-base text-xs">
+                Disinfections and Sterilizations
+              </p>
+            </div>
+            <div className="flex items-center my-1 md:my-0 lg:my-0">
+              <GiSmokeBomb />
+              <p className="ml-2 md:text-base lg:text-base text-xs">
+                Smoke Detectors
+              </p>
+            </div>
           </div>
         </div>
       </div>
