@@ -11,6 +11,8 @@ import HotelPhotoGallery from "@/components/hotelPhotoGallery/HotelPhotoGallery"
 import BookRoomCta from "@/components/BookRoomCta/BookRoomCta";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import axios from "axios";
+import { getStripe } from "@/libs/stripe";
 
 const RoomDetails = (porps: { params: { slug: string } }) => {
   const {
@@ -59,6 +61,31 @@ const RoomDetails = (porps: { params: { slug: string } }) => {
 
     const hotelRoomSlug = room.slug.current;
     //Integrate Stripe
+
+    const stripe = await getStripe();
+
+    try {
+      const { data: stripeSession } = await axios.post("/api/stripe", {
+        checkinDate,
+        checkoutDate,
+        adults,
+        children: noOfChildren,
+        numberOfDays,
+        hotelRoomSlug,
+      });
+
+      if (stripe) {
+        const result = await stripe.redirectToCheckout({
+          sessionId: stripeSession.id,
+        });
+        if (result.error) {
+          toast.error("Payment failed");
+        }
+      }
+    } catch (eror) {
+      console.log("Error", eror);
+      toast.error("Payment failed-- An Error occured");
+    }
   };
 
   return (
