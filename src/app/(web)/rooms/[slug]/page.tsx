@@ -22,8 +22,6 @@ const RoomDetails = (porps: { params: { slug: string } }) => {
   const [adults, setAdults] = useState(1);
   const [noOfChildren, setNoOfChildren] = useState(0);
 
-
-
   const fetchRoom = async () => getRoom(slug);
   const { data: room, error, isLoading } = useSWR("/api/room", fetchRoom);
 
@@ -43,22 +41,26 @@ const RoomDetails = (porps: { params: { slug: string } }) => {
     return null;
   };
 
-  
   const calcNumDays = () => {
     if (!checkinDate || !checkoutDate) return;
     const timeDiff = checkoutDate.getTime() - checkinDate.getTime();
     const noOfDays = Math.ceil(timeDiff / (24 * 60 * 60 * 1000));
     return noOfDays;
   };
+
   const handleBookNowClick = async () => {
     if (!checkinDate || !checkoutDate)
-      return toast.error('Please provide checkin / checkout date');
+      return toast.error("Please provide checkin / checkout date");
 
     if (checkinDate > checkoutDate)
-      return toast.error('Please choose a valid checkin period');
+      return toast.error("Please choose a valid checkin period");
 
     const numberOfDays = calcNumDays();
-  }
+
+    const hotelRoomSlug = room.slug.current;
+    //Integrate Stripe
+  };
+
   return (
     <div>
       <HotelPhotoGallery photos={room.images} />
