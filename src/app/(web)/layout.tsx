@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+
 import Header from "@/components/header/Header";
 import "./globals.css";
 import Footer from "@/components/footer/Footer";
@@ -13,6 +14,8 @@ const poppins = Poppins({
   style: ["italic", "normal"],
   variable: "--font-poppins",
 });
+
+
 
 export const metadata: Metadata = {
   title: "Elite Eden",
@@ -34,7 +37,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className={poppins.className}>
+      <body className={`${poppins.className}`}>
         <NextAuthProvider>
           <ThemeProvider>
             <Toast />

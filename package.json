@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/dancing-script": "^5.0.16",
     "@sanity/vision": "^3.23.4",
     "@stripe/stripe-js": "^2.2.2",
     "axios": "^1.6.3",

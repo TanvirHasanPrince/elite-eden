@@ -20,6 +20,7 @@ const config: Config = {
       },
       fontFamily: {
         poppins: ["var(--font-poppins)", ...fontFamily.sans],
+        dancingScript: ["var(--font-dancingScript)", ...fontFamily.sans],
       },
     },
   },

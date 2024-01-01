@@ -1,4 +1,3 @@
-import Image from "next/image";
 import ClientComponent from "./ClientComponent";
 import { heading1, section2 } from "./ServerComponent";
 
