@@ -28,7 +28,7 @@ const RoomReview: FC<{ roomId: string }> = ({ roomId }) => {
 
   return (
     <>
-      {roomReviews &&
+      {Array.isArray(roomReviews) &&
         roomReviews.map((review) => (
           <div
             className="bg-gray-100 dark:bg-gray-900 p-4 rounded-lg"
@@ -40,7 +40,6 @@ const RoomReview: FC<{ roomId: string }> = ({ roomId }) => {
                 <Rating rating={review.userRating} />
               </div>
             </div>
-
             <p>{review.text}</p>
           </div>
         ))}

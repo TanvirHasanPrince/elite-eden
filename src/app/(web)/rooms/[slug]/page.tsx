@@ -14,7 +14,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { getStripe } from "@/libs/stripe";
 import RoomReview from "@/components/roomReview/RoomReview";
-
+import { useSession } from "next-auth/react";
 
 const RoomDetails = (porps: { params: { slug: string } }) => {
   const {
@@ -25,7 +25,6 @@ const RoomDetails = (porps: { params: { slug: string } }) => {
   const [checkoutDate, setCheckoutDate] = useState<Date | null>(null);
   const [adults, setAdults] = useState(1);
   const [noOfChildren, setNoOfChildren] = useState(0);
-
 
   const fetchRoom = async () => getRoom(slug);
   const { data: room, error, isLoading } = useSWR("/api/room", fetchRoom);
@@ -87,7 +86,7 @@ const RoomDetails = (porps: { params: { slug: string } }) => {
       }
     } catch (eror) {
       console.log("Error", eror);
-      toast.error("Payment failed-- An Error occured");
+      toast.error("Payment failed-- Make sure to login first");
     }
   };
 
