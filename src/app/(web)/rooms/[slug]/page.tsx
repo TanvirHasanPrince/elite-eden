@@ -13,6 +13,8 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { getStripe } from "@/libs/stripe";
+import RoomReview from "@/components/roomReview/RoomReview";
+
 
 const RoomDetails = (porps: { params: { slug: string } }) => {
   const {
@@ -23,6 +25,7 @@ const RoomDetails = (porps: { params: { slug: string } }) => {
   const [checkoutDate, setCheckoutDate] = useState<Date | null>(null);
   const [adults, setAdults] = useState(1);
   const [noOfChildren, setNoOfChildren] = useState(0);
+
 
   const fetchRoom = async () => getRoom(slug);
   const { data: room, error, isLoading } = useSWR("/api/room", fetchRoom);
@@ -157,13 +160,12 @@ const RoomDetails = (porps: { params: { slug: string } }) => {
                   </div>
                 </div>
               </div>
-
               <div className="shadow dark:shadow-white rounded-lg p-6">
                 <div className="items-center mb-4">
                   <p className="md:text-lg font-semibold">Customer Reviews</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* <RoomReview roomId={room._id} /> */}
+                  <RoomReview roomId={room._id} />
                 </div>
               </div>
             </div>
