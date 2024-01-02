@@ -1,3 +1,4 @@
+import AfterHeroSection from "@/components/afterHeroSection/AfterHeroSection";
 import FeaturedRoom from "@/components/featuredRoom/FeaturedRoom";
 import Gallery from "@/components/gallery/Gallery";
 import HeroSection from "@/components/heroSection/HeroSection";
@@ -11,6 +12,7 @@ const Home = async () => {
   return (
     <>
       <HeroSection></HeroSection>
+      <AfterHeroSection/>
       {/* <PageSearch /> */}
       <FeaturedRoom featuredRoom={featuredRoom}></FeaturedRoom>
       <Gallery />
