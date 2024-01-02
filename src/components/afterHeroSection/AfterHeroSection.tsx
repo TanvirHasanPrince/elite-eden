@@ -12,7 +12,7 @@ const AfterHeroSection = () => {
     <section className="flex px-4 items-center justify-center gap-12 container mx-auto mt-10 bg-gray-100 p-28 dark:bg-black">
       <div className="text-center">
         <h1
-          className={`${dancingScript.className} text-yellow-500 text-xs md:text-lg ld:text-lg text-center font-bold`}
+          className={`${dancingScript.className} text-2xl text-yellow-500 text-center font-bold mb-2`}
         >
           HERITAGE MEETS MODERN LUXURY{" "}
         </h1>

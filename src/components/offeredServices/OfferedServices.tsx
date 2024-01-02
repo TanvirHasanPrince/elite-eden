@@ -23,7 +23,7 @@ const OfferedServices = () => {
       <div className="p-10">
         <div className="mb-4">
           <h1
-            className={`${dancingScript.className} text-yellow-500 text-left font-bold`}
+            className={`${dancingScript.className} text-left text-xl font-bold`}
           >
             Discover the services we offer
           </h1>
