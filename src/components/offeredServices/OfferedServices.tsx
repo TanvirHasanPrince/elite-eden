@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 
 import { Dancing_Script } from "next/font/google";
+import Image from "next/image";
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
@@ -18,7 +19,7 @@ const dancingScript = Dancing_Script({
 
 const OfferedServices = () => {
   return (
-    <section className="flex px-4 justify-between gap-12 container mx-auto mt-10 bg-gray-100 p-28 dark:bg-black">
+    <section className="flex px-4 justify-center items-center gap-12 container mx-auto mt-10 bg-gray-100  dark:bg-black">
       <div className="p-10">
         <div className="mb-4">
           <h1
@@ -137,9 +138,29 @@ const OfferedServices = () => {
           </div>
         </div>
       </div>
-      <div className="hidden md:block lg:block">
-        {" "}
-        <p>images</p>{" "}
+      <div className="hidden md:block lg:block mx-auto container">
+        <div className="flex flex-wrap justify-center items-center">
+          <div className="flex w-full flex-wrap mt-20">
+            <div className="w-full p-1 md:p-2 h-48">
+              <Image
+                alt="gallery"
+                className="img"
+                src="/images/service-1.jpg"
+                width={200}
+                height={200}
+              />
+            </div>
+            <div className="w-full p-1 md:p-2 h-48">
+              <Image
+                alt="gallery"
+                className="img"
+                src="/images/service-2.jpg"
+                width={200}
+                height={200}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
