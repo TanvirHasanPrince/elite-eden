@@ -25,9 +25,9 @@ export const heading1 = (
 );
 
 export const section2 = (
-  <div className="flex-1">
+  <div className="flex-1 lg:block hidden">
     {/* Images */}
-    <div className="md:grid lg:grid hidden gap-8 grid-cols-1 ">
+    <div className="lg:grid hidden gap-8 grid-cols-1 ">
       <div className="grid grid-cols-2 gap-8 h-48">
         <div className="rounded-2xl overflow-hidden">
           <Image
