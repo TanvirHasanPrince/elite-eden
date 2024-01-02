@@ -25,6 +25,7 @@ export async function POST(req: Request, res: Response) {
     hotelRoomSlug,
     numberOfDays,
   }: RequestData = await req.json();
+
   if (
     !checkinDate ||
     !checkoutDate ||
@@ -32,7 +33,7 @@ export async function POST(req: Request, res: Response) {
     !hotelRoomSlug ||
     !numberOfDays
   ) {
-    return new NextResponse("please all filelds required", { status: 400 });
+    return new NextResponse("Please all fields are required", { status: 400 });
   }
 
   const origin = req.headers.get("origin");

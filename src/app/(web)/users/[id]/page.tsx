@@ -77,6 +77,8 @@ const UserDetails = (props: { params: { id: string } }) => {
     isLoading,
   } = useSWR("/api/userbooking", fetchUserBooking);
 
+
+
   const {
     data: userData,
     isLoading: loadingUserData,
@@ -107,8 +109,8 @@ const UserDetails = (props: { params: { id: string } }) => {
             />
           </div>
           <div className="font-normal py-4 text-left">
-            <h6 className="text-xl font-bold pb-3">About</h6>
-            <p className="text-sm">{userData.about ?? ""}</p>
+            {/* <h6 className="text-xl font-bold pb-3">About</h6>
+            <p className="text-sm">{userData.about ?? ""}</p> */}
           </div>
           <div className="font-normal text-left">
             <h6 className="text-xl font-bold pb-3">{userData.name}</h6>

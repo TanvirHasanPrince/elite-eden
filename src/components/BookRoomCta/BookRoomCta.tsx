@@ -39,7 +39,6 @@ const BookRoomCta: FC<Props> = (props) => {
     handleBookNowClick,
   } = props;
 
-  console.log(checkinDate, checkoutDate);
 
   const discountPrice = price - (price / 100) * discount;
 

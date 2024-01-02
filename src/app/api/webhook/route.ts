@@ -1,6 +1,7 @@
+import Stripe from "stripe";
+
 import { createBooking, updateHotelRoom } from "@/libs/apis";
 import { NextResponse } from "next/server";
-import Stripe from "stripe";
 
 const checkout_session_completed = "checkout.session.completed";
 
@@ -13,24 +14,20 @@ export async function POST(req: Request, res: Response) {
   const sig = req.headers.get("stripe-signature");
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-  if (!sig || !webhookSecret) {
-    console.error("Missing signature or webhook secret");
-    return new NextResponse("Invalid request", { status: 400 });
-  }
-
   let event: Stripe.Event;
 
   try {
+    if (!sig || !webhookSecret) return;
     event = stripe.webhooks.constructEvent(reqBody, sig, webhookSecret);
   } catch (error: any) {
-    console.error(`Webhook Error: ${error.message}`);
     return new NextResponse(`Webhook Error: ${error.message}`, { status: 500 });
   }
 
-  // Handle the event
+  // load our event
   switch (event.type) {
     case checkout_session_completed:
       const session = event.data.object;
+
       const {
         // @ts-ignore
         metadata: {
@@ -55,7 +52,6 @@ export async function POST(req: Request, res: Response) {
         },
       } = session;
 
-      // Create a booking or perform other actions as needed
       await createBooking({
         adults: Number(adults),
         checkinDate,
@@ -68,20 +64,20 @@ export async function POST(req: Request, res: Response) {
         user,
       });
 
-      //Update hotel room
+      //   Update hotel Room
       await updateHotelRoom(hotelRoom);
 
-      return new NextResponse("Booking successful", {
+      return NextResponse.json("Booking successful", {
         status: 200,
-        statusText: "Booking successful",
+        statusText: "Booking Successful",
       });
 
     default:
       console.log(`Unhandled event type ${event.type}`);
   }
 
-  return new NextResponse("Event received", {
+  return NextResponse.json("Event Received", {
     status: 200,
-    statusText: "Event received",
+    statusText: "Event Received",
   });
 }
