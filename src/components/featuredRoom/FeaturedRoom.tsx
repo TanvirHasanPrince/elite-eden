@@ -5,14 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { Room } from "@/models/room";
 
-
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   style: ["normal"],
   variable: "--font-dancingScript",
 });
-
 
 type Props = {
   featuredRoom: Room;
@@ -84,7 +82,7 @@ const FeaturedRoom: FC<Props> = (props) => {
           </div>
           <div className="mt-8">
             <Link
-            type="button"
+              type="button"
               href={`/rooms/${featuredRoom.slug.current}`}
               className="btn-tertiary"
             >

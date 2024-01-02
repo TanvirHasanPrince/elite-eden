@@ -1,9 +1,24 @@
 import Image from "next/image";
+import { Dancing_Script } from "next/font/google";
+
+const dancingScript = Dancing_Script({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  style: ["normal"],
+  variable: "--font-dancingScript",
+});
 
 const Gallery = () => {
   return (
-    <div className="mx-auto container py-14 h-full">
-      <div className="flex flex-wrap md:-m-2 lg:-m-2">
+    <div className="mx-auto container py-14 h-full text-center">
+      <div className="mb-8">
+        <h3
+          className={`${dancingScript.className} text-5xl font-bold`}
+        >
+          Some of our favourite momemnts
+        </h3>
+      </div>
+      <div className="flex flex-wrap">
         <div className="flex w-1/2 flex-wrap">
           <div className="w-1/2 p-1 md:p-2 h-48">
             <Image
