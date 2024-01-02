@@ -138,7 +138,7 @@ const OfferedServices = () => {
           </div>
         </div>
       </div>
-      <div className="hidden md:block lg:block mx-auto container">
+      <div className="hidden lg:block mx-auto container">
         <div className="flex flex-wrap justify-center items-center">
           <div className="flex w-full flex-wrap mt-20">
             <div className="w-full p-1 md:p-2 h-48">
