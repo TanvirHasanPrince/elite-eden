@@ -36,7 +36,7 @@ Welcome to Elite Eden, your go-to destination for luxurious accommodations! Whet
 ## Live Site
 
 Visit live site at [Elite Eden](https://elite-eden.vercel.app/) to experience luxury at your fingertips.
-
+Watch how the website works at [Video Demo]([https://elite-eden.vercel.app/](https://drive.google.com/file/d/1-vl_Hr06nBK00UPQFJj9HRm59yUSCorl/view?usp=sharing))
 ---
 
 Feel free to contribute to the project or provide feedback. We value your experience with Elite Eden and strive to create the best possible luxury travel platform.
